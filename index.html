@@ -243,6 +243,24 @@
   }
   @media (prefers-reduced-motion: reduce) { .hero .pompi-sentado { animation: none; } }
 
+  /* Bienvenida, ficha y voz de Pompi */
+  .welcome { background: var(--terra); color: #fff; padding: 1.4rem 0; text-align: center; }
+  .welcome-lema { font-family: "Fredoka", sans-serif; font-size: 1.5rem; margin: 0; color: #fff; }
+  .welcome-lema strong { font-weight: 700; }
+  .welcome-sub { margin: .2rem 0 0; font-size: .92rem; opacity: .95; }
+
+  .ficha { background: var(--crema); }
+  .ficha-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+  .ficha-card { position: relative; background: var(--blanco); border: 1px solid var(--linea); border-radius: 22px; padding: 2rem 1.7rem 1.6rem; }
+  .ficha-num { width: 40px; height: 40px; border-radius: 50%; background: var(--terra); color: #fff; font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; margin-bottom: .9rem; }
+  .ficha-card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: .6rem; }
+  .ficha-card p { font-size: .95rem; margin-bottom: .7rem; }
+  .ficha-list { margin: 0 0 .7rem; padding-left: 1.1rem; font-size: .95rem; }
+  .ficha-list li { margin-bottom: .4rem; }
+  .ficha-placeholder { font-size: .8rem !important; color: var(--txt-suave); background: var(--crema); border: 1px dashed var(--terra-suave); border-radius: 10px; padding: .5rem .7rem; }
+  .pompi-say { margin-top: 1rem; display: inline-block; background: var(--amarillo); color: var(--txt); font-weight: 600; font-size: .85rem; padding: .5rem .9rem; border-radius: 14px 14px 14px 4px; }
+  @media (max-width: 760px) { .ficha-grid { grid-template-columns: 1fr; } .welcome-lema { font-size: 1.2rem; } }
+
   /* Barra fija de consulta (mobile) */
   .sticky-cta { display: none; }
   @media (max-width: 760px) {
@@ -353,6 +371,14 @@
   </div>
 </div>
 
+<!-- BIENVENIDA -->
+<section class="welcome" aria-label="Bienvenida">
+  <div class="wrap welcome-inner">
+    <p class="welcome-lema">Bienvenida/o. <strong>Sentate tranqui.</strong></p>
+    <p class="welcome-sub">Acá encontrás cada cosa explicada con calma, en lenguaje sencillo y paso a paso.</p>
+  </div>
+</section>
+
 <!-- PRODUCTO -->
 <section class="product" id="producto">
   <div class="wrap">
@@ -385,6 +411,62 @@
       <div class="product-note">
         <strong>Antes de comprar:</strong> RECTIVIA es un medicamento de venta libre en proceso de autorización. Leé el prospecto, respetá las indicaciones y consultá a tu farmacéutico o médico si tenés dudas, si los síntomas persisten, si empeoran o si notás sangrado.
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FICHA DEL PRODUCTO -->
+<section class="ficha" id="ficha">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Ficha del producto</span>
+      <h2>Todo explicado, paso a paso</h2>
+      <p>Organizado en cuatro apartados para que encuentres lo que necesitás sin leer todo.</p>
+    </div>
+
+    <div class="ficha-grid">
+
+      <article class="ficha-card">
+        <div class="ficha-num">1</div>
+        <h3>¿Qué es?</h3>
+        <p>RECTIVIA es un producto en formato de gomita masticable, pensado para las molestias asociadas a las hemorroides. Es fácil de llevar y se usa sin cremas.</p>
+        <p class="ficha-placeholder">[Completar: indicación aprobada según el prospecto]</p>
+        <div class="pompi-say">Tranqui, empezamos por lo básico.</div>
+      </article>
+
+      <article class="ficha-card">
+        <div class="ficha-num">2</div>
+        <h3>Composición</h3>
+        <p>Te explicamos cada componente con lenguaje sencillo: qué es y para qué cumple función dentro de la formulación aprobada.</p>
+        <ul class="ficha-list">
+          <li><strong>[Componente 1]:</strong> qué es y para qué se utiliza.</li>
+          <li><strong>[Componente 2]:</strong> qué es y para qué se utiliza.</li>
+          <li><strong>[Componente 3]:</strong> qué es y para qué se utiliza.</li>
+        </ul>
+        <p class="ficha-placeholder">[Completar con la composición oficial]</p>
+        <div class="pompi-say">Sin vueltas: cada cosa tiene su motivo.</div>
+      </article>
+
+      <article class="ficha-card">
+        <div class="ficha-num">3</div>
+        <h3>Modo de uso</h3>
+        <p>Seguí las indicaciones del prospecto aprobado: forma de uso, dosis y duración. Si no notás mejoría o tenés dudas, consultá a tu médico o farmacéutico.</p>
+        <p class="ficha-placeholder">[Completar según el prospecto aprobado]</p>
+        <div class="pompi-say">Paso a paso, sin apuros.</div>
+      </article>
+
+      <article class="ficha-card">
+        <div class="ficha-num">4</div>
+        <h3>Precauciones</h3>
+        <ul class="ficha-list">
+          <li>No lo uses si sos alérgica/o a alguno de sus componentes.</li>
+          <li>Consultá antes de usarlo si estás embarazada, en período de lactancia o tomás otros medicamentos.</li>
+          <li>Mantenelo fuera del alcance de los niños.</li>
+        </ul>
+        <p class="ficha-placeholder">[Completar según el prospecto aprobado]</p>
+        <div class="pompi-say">Mejor saberlo antes, ¿no?</div>
+      </article>
+
     </div>
   </div>
 </section>
