@@ -359,6 +359,30 @@
     .hero-art .s2 { top: 0; left: 2%; bottom: auto; transform: rotate(-3deg); }
     .band { position: relative; z-index: 2; margin-top: 1rem; }
   }
+  /* Corrección celular: ventana de suscripción y gomitas */
+  @media (max-width: 520px) {
+    .gummy-rain { display: none; }
+    .nl-overlay { padding: .8rem; align-items: flex-end; }
+    .nl-modal { border-radius: 22px; padding: 2rem 1.1rem 1.2rem; max-height: 88vh; }
+    .nl-modal h2 { font-size: 1.6rem; }
+    .nl-modal p { font-size: .88rem; line-height: 1.5; }
+    .nl-modal .tag { font-size: .68rem; }
+    .nl-legal { font-size: .64rem !important; }
+    .nl-close { top: .4rem; right: .5rem; font-size: 1.6rem; }
+  }
+  /* Corrección celular: tamaño de las imágenes */
+  @media (max-width: 760px) {
+    img { max-width: 100%; height: auto; }
+    .banner-img { border-radius: 16px; }
+    .pack-photo { aspect-ratio: auto; height: 300px; padding: 1rem; }
+    .slide-img { inset: 1rem; width: calc(100% - 2rem); height: calc(100% - 2rem); }
+    .hero-art { height: 320px; }
+    .hero-art .sofa-img { width: 92%; }
+    .hero .pompi-sentado { width: min(140px, 46%); bottom: 34%; }
+    .story-art { min-height: 220px; }
+    .story .pompi-story { width: min(160px, 55%); }
+    .logo-img { height: 34px; width: auto; }
+  }
 </style>
 </head>
 <body>
