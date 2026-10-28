@@ -389,6 +389,13 @@
     .story .pompi-story { width: min(160px, 55%); }
     .logo-img { height: 34px; width: auto; }
   }
+  /* Corrección celular: campo de email de la suscripción */
+  @media (max-width: 760px) {
+    .news form { flex-direction: column; align-items: stretch; gap: .7rem; }
+    .news input[type=email] { flex: none; width: 100%; height: 52px; padding: 0 1.2rem; text-align: center; }
+    .news form .btn { width: 100%; text-align: center; height: 52px; display: flex; align-items: center; justify-content: center; }
+    .news .legal-small { font-size: .68rem; text-align: left; }
+  }
 </style>
 </head>
 <body>
