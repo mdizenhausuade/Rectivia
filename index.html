@@ -304,6 +304,12 @@
   .nl-close { position: absolute; top: .6rem; right: .8rem; background: none; border: 0; font-size: 1.9rem; line-height: 1; color: var(--txt-suave); cursor: pointer; padding: .2rem .5rem; }
   .nl-close:hover { color: var(--terra); }
 
+  /* Botón de audio del jingle */
+  .audio-bar { background: var(--durazno); padding: 1.6rem 0; display: flex; justify-content: center; }
+  .audio-btn { display: inline-flex; align-items: center; gap: .7rem; background: var(--terra); color: #fff; border: 0; border-radius: 999px; padding: .9rem 1.6rem; font: inherit; font-weight: 600; font-size: .95rem; cursor: pointer; box-shadow: 0 10px 24px rgba(207,104,71,.3); transition: transform .15s ease, background .15s ease; }
+  .audio-btn:hover { background: #b9583a; transform: translateY(-1px); }
+  .audio-ico { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #fff; color: var(--terra); font-size: .75rem; }
+
   /* Barra fija de consulta (mobile) */
   .sticky-cta { display: none; }
   @media (max-width: 760px) {
@@ -675,6 +681,15 @@
   </div>
 </section>
 
+<section class="audio-bar" aria-label="Jingle de RECTIVIA">
+  <button class="audio-btn" id="jingle-btn" type="button" aria-pressed="false">
+    <span class="audio-ico" id="jingle-ico" aria-hidden="true">▶</span>
+    <span id="jingle-txt">Escuchá el jingle</span>
+  </button>
+  <audio id="jingle" src="jingle.mp4" preload="none"></audio>
+</section>
+
+
 <!-- BANNER -->
 <section class="banner" aria-label="Campaña RECTIVIA">
   <div class="wrap">
@@ -726,7 +741,6 @@
     </div>
   </div>
 </footer>
-
 <div class="sticky-cta"><a class="btn" href="#producto">Conocer RECTIVIA</a></div>
 
 <script>
@@ -806,6 +820,29 @@
       alert('¡Gracias! Te avisaremos cuando haya novedades.');
       cerrarModal();
     });
+  })();
+</script>
+<script>
+  (function () {
+    var audio = document.getElementById('jingle');
+    var btn = document.getElementById('jingle-btn');
+    var ico = document.getElementById('jingle-ico');
+    var txt = document.getElementById('jingle-txt');
+    if (!audio || !btn) return;
+    function actualizar(sonando) {
+      btn.setAttribute('aria-pressed', sonando ? 'true' : 'false');
+      ico.textContent = sonando ? '❚❚' : '▶';
+      txt.textContent = sonando ? 'Pausar jingle' : 'Escuchá el jingle';
+    }
+    btn.addEventListener('click', function () {
+      if (audio.paused) {
+        audio.play().then(function () { actualizar(true); }).catch(function () { actualizar(false); });
+      } else {
+        audio.pause();
+        actualizar(false);
+      }
+    });
+    audio.addEventListener('ended', function () { actualizar(false); });
   })();
 </script>
 </body>
