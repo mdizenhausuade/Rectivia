@@ -310,6 +310,14 @@
   .audio-btn:hover { background: #b9583a; transform: translateY(-1px); }
   .audio-ico { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #fff; color: var(--terra); font-size: .75rem; }
 
+  /* Bloque de compra: próximamente */
+  .buy-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; margin-top: .4rem; }
+  .soon-badge { display: inline-flex; align-items: center; gap: .45rem; background: var(--amarillo); color: var(--txt); font-weight: 600; font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; padding: .45rem .9rem; border-radius: 999px; }
+  .soon-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--terra); }
+  .btn-avisar { padding: 1rem 1.8rem; box-shadow: 0 10px 22px rgba(207,104,71,.25); }
+  .buy-help { font-size: .85rem; color: var(--txt-suave); margin: 0; max-width: 46ch; }
+  @media (max-width: 520px) { .buy-wrap { align-items: stretch; } .btn-avisar { text-align: center; } }
+
   /* Barra fija de consulta (mobile) */
   .sticky-cta { display: none; }
   @media (max-width: 760px) {
@@ -493,7 +501,11 @@
         <li>Acompañamiento de tu farmacéutico ante cualquier duda</li>
       </ul>
 
-      <a class="btn disabled" href="#" aria-disabled="true" title="Disponible una vez obtenida la autorización sanitaria">Agregar al carrito</a>
+      <div class="buy-wrap">
+        <span class="soon-badge">Próximamente</span>
+        <a class="btn btn-avisar" href="#contacto">Avisame cuando esté disponible</a>
+        <p class="buy-help">Estamos esperando la autorización sanitaria para habilitar la compra. Dejanos tu email y te avisamos.</p>
+      </div>
 
       <div class="product-note">
         <strong>Antes de comprar:</strong> RECTIVIA es un medicamento de venta libre en proceso de autorización. Leé el prospecto, respetá las indicaciones y consultá a tu farmacéutico o médico si tenés dudas, si los síntomas persisten, si empeoran o si notás sangrado.
