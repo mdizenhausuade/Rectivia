@@ -318,6 +318,21 @@
   .buy-help { font-size: .85rem; color: var(--txt-suave); margin: 0; max-width: 46ch; }
   @media (max-width: 520px) { .buy-wrap { align-items: stretch; } .btn-avisar { text-align: center; } }
 
+  /* Sección: Hablemos sin vergüenza */
+  .valores { background: var(--crema); }
+  .valores-texto { max-width: 720px; margin: 0 auto 3rem; text-align: center; }
+  .valores-texto p { font-size: 1.05rem; color: var(--txt); margin-bottom: 1rem; }
+  .valores-destacado { font-family: "Fredoka", sans-serif; font-size: 1.6rem !important; color: var(--terra) !important; font-weight: 600; margin-top: 1.6rem !important; }
+  .valores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .valor-card { background: var(--blanco); border: 1px solid var(--linea); border-radius: 22px; padding: 1.8rem 1.5rem; position: relative; }
+  .valor-card::before { content: ""; display: block; width: 36px; height: 6px; border-radius: 999px; background: var(--coral); margin-bottom: 1rem; }
+  .valor-nombre { display: block; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--txt-suave); margin-bottom: .4rem; }
+  .valor-card h3 { font-size: 1.3rem; font-weight: 600; color: var(--terra); line-height: 1.25; }
+  .valores-cierre { text-align: center; margin-top: 3rem; }
+  .valores-lema { font-family: "Fredoka", sans-serif; font-size: 1.5rem; color: var(--terra); margin: 0 0 1.4rem; font-weight: 600; }
+  @media (max-width: 860px) { .valores-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .valores-grid { grid-template-columns: 1fr; } .valores-destacado { font-size: 1.3rem !important; } }
+
   /* Barra fija de consulta (mobile) */
   .sticky-cta { display: none; }
   @media (max-width: 760px) {
@@ -420,6 +435,7 @@
     <nav class="menu" aria-label="Principal">
       <a href="#producto">Producto</a>
       <a href="#por-que">Por qué RECTIVIA</a>
+      <a href="#hablemos">Hablemos sin vergüenza</a>
       <a href="#como-usar">Cómo se usa</a>
       <a href="#faq">Preguntas frecuentes</a>
       <a href="#contacto">Contacto</a>
@@ -612,6 +628,55 @@
       <img src="pompi.png" alt="" class="pompi-img pompi-story">
 
       <div class="sillas"><span></span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HABLEMOS SIN VERGÜENZA -->
+<section class="valores" id="hablemos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Propósito y valores</span>
+      <h2>Hablemos sin vergüenza</h2>
+    </div>
+
+    <div class="valores-texto">
+      <p>Hay temas que aprendimos a callar. Cosas que nos pasan, que nos incomodan y que muchas veces preferimos guardar por miedo a lo que puedan pensar los demás.</p>
+      <p>En RECTIVIA creemos que hablar del cuerpo y de la salud debería ser más natural, más cercano y libre de prejuicios.</p>
+      <p>Por eso, elegimos escuchar sin juzgar, informar con responsabilidad y acompañar con empatía.</p>
+      <p class="valores-destacado">Porque hablar de esto no debería dar vergüenza.</p>
+    </div>
+
+    <div class="valores-grid">
+      <article class="valor-card">
+        <span class="valor-nombre">Propósito</span>
+        <h3>«Hablar de esto no debería dar vergüenza»</h3>
+      </article>
+      <article class="valor-card">
+        <span class="valor-nombre">Empatía</span>
+        <h3>«Cada experiencia merece ser escuchada»</h3>
+      </article>
+      <article class="valor-card">
+        <span class="valor-nombre">Naturalidad</span>
+        <h3>«Lo que nos pasa no debería ser un tabú»</h3>
+      </article>
+      <article class="valor-card">
+        <span class="valor-nombre">Responsabilidad</span>
+        <h3>«Informar también es cuidar»</h3>
+      </article>
+      <article class="valor-card">
+        <span class="valor-nombre">Discreción</span>
+        <h3>«Tu intimidad merece respeto»</h3>
+      </article>
+      <article class="valor-card">
+        <span class="valor-nombre">Cercanía</span>
+        <h3>«Acompañar, sin juzgar»</h3>
+      </article>
+    </div>
+
+    <div class="valores-cierre">
+      <p class="valores-lema">RECTIVIA — Sentate tranqui.</p>
+      <a class="btn" href="#producto">Conocé lo que nos mueve</a>
     </div>
   </div>
 </section>
