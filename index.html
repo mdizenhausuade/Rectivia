@@ -333,6 +333,26 @@
   @media (max-width: 860px) { .valores-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 520px) { .valores-grid { grid-template-columns: 1fr; } .valores-destacado { font-size: 1.3rem !important; } }
 
+  /* Carrusel "paletas": Hablemos sin vergüenza */
+  .carrusel { max-width: 760px; margin: 0 auto; }
+  .carrusel-viewport { overflow: hidden; border-radius: 22px; }
+  .carrusel-track { display: flex; transition: transform .6s cubic-bezier(.4,.1,.2,1); }
+  .carrusel-slide { flex: 0 0 100%; min-height: 280px; margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2.6rem 2.2rem; box-sizing: border-box; }
+  .carrusel-slide::before { margin-left: auto; margin-right: auto; }
+  .carrusel-slide p { margin: 0 0 1rem; font-size: 1.02rem; color: var(--txt); max-width: 56ch; }
+  .carrusel-slide p:last-child { margin-bottom: 0; }
+  .carrusel-slide h3 { font-size: 1.6rem; }
+  .carrusel-slide .valor-nombre { margin-bottom: .6rem; }
+  .carrusel-slide .valores-destacado { font-family: "Fredoka", sans-serif; font-size: 1.5rem !important; color: var(--terra) !important; font-weight: 600; line-height: 1.25; }
+  .carrusel-slide .valores-lema { font-family: "Fredoka", sans-serif; font-size: 1.2rem !important; color: var(--terra) !important; font-weight: 600; margin: .8rem 0 1.4rem !important; }
+  .carrusel-controles { display: flex; align-items: center; justify-content: center; gap: 1.1rem; margin-top: 1.4rem; }
+  .car-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--terra-suave); background: #fff; color: var(--terra); font-size: 1.5rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .car-btn:hover { background: var(--durazno); }
+  .car-dots { display: flex; gap: .45rem; align-items: center; }
+  .car-dot { width: 10px; height: 10px; border-radius: 999px; border: 0; background: var(--rosa-empolvado); cursor: pointer; padding: 0; transition: width .3s ease, background .3s ease; }
+  .car-dot.activo { width: 26px; background: var(--terra); }
+  @media (max-width: 520px) { .carrusel-slide { padding: 2rem 1.3rem; min-height: 300px; } .carrusel-slide h3 { font-size: 1.35rem; } .carrusel-slide .valores-destacado { font-size: 1.25rem !important; } }
+
   /* Barra fija de consulta (mobile) */
   .sticky-cta { display: none; }
   @media (max-width: 760px) {
@@ -640,43 +660,60 @@
       <h2>Hablemos sin vergüenza</h2>
     </div>
 
-    <div class="valores-texto">
-      <p>Hay temas que aprendimos a callar. Cosas que nos pasan, que nos incomodan y que muchas veces preferimos guardar por miedo a lo que puedan pensar los demás.</p>
-      <p>En RECTIVIA creemos que hablar del cuerpo y de la salud debería ser más natural, más cercano y libre de prejuicios.</p>
-      <p>Por eso, elegimos escuchar sin juzgar, informar con responsabilidad y acompañar con empatía.</p>
-      <p class="valores-destacado">Porque hablar de esto no debería dar vergüenza.</p>
-    </div>
+    <div class="carrusel" id="carrusel" aria-roledescription="carrusel" aria-label="Propósito y valores de RECTIVIA">
+      <div class="carrusel-viewport">
+        <div class="carrusel-track" id="carrusel-track">
 
-    <div class="valores-grid">
-      <article class="valor-card">
-        <span class="valor-nombre">Propósito</span>
-        <h3>«Hablar de esto no debería dar vergüenza»</h3>
-      </article>
-      <article class="valor-card">
-        <span class="valor-nombre">Empatía</span>
-        <h3>«Cada experiencia merece ser escuchada»</h3>
-      </article>
-      <article class="valor-card">
-        <span class="valor-nombre">Naturalidad</span>
-        <h3>«Lo que nos pasa no debería ser un tabú»</h3>
-      </article>
-      <article class="valor-card">
-        <span class="valor-nombre">Responsabilidad</span>
-        <h3>«Informar también es cuidar»</h3>
-      </article>
-      <article class="valor-card">
-        <span class="valor-nombre">Discreción</span>
-        <h3>«Tu intimidad merece respeto»</h3>
-      </article>
-      <article class="valor-card">
-        <span class="valor-nombre">Cercanía</span>
-        <h3>«Acompañar, sin juzgar»</h3>
-      </article>
-    </div>
+          <article class="valor-card carrusel-slide">
+            <p>Hay temas que aprendimos a callar. Cosas que nos pasan, que nos incomodan y que muchas veces preferimos guardar por miedo a lo que puedan pensar los demás.</p>
+            <p>En RECTIVIA creemos que hablar del cuerpo y de la salud debería ser más natural, más cercano y libre de prejuicios.</p>
+            <p>Por eso, elegimos escuchar sin juzgar, informar con responsabilidad y acompañar con empatía.</p>
+          </article>
 
-    <div class="valores-cierre">
-      <p class="valores-lema">RECTIVIA — Sentate tranqui.</p>
-      <a class="btn" href="#producto">Conocé lo que nos mueve</a>
+          <article class="valor-card carrusel-slide">
+            <span class="valor-nombre">Propósito</span>
+            <h3>«Hablar de esto no debería dar vergüenza»</h3>
+          </article>
+
+          <article class="valor-card carrusel-slide">
+            <span class="valor-nombre">Empatía</span>
+            <h3>«Cada experiencia merece ser escuchada»</h3>
+          </article>
+
+          <article class="valor-card carrusel-slide">
+            <span class="valor-nombre">Naturalidad</span>
+            <h3>«Lo que nos pasa no debería ser un tabú»</h3>
+          </article>
+
+          <article class="valor-card carrusel-slide">
+            <span class="valor-nombre">Responsabilidad</span>
+            <h3>«Informar también es cuidar»</h3>
+          </article>
+
+          <article class="valor-card carrusel-slide">
+            <span class="valor-nombre">Discreción</span>
+            <h3>«Tu intimidad merece respeto»</h3>
+          </article>
+
+          <article class="valor-card carrusel-slide">
+            <span class="valor-nombre">Cercanía</span>
+            <h3>«Acompañar, sin juzgar»</h3>
+          </article>
+
+          <article class="valor-card carrusel-slide">
+            <p class="valores-destacado">Porque hablar de esto no debería dar vergüenza.</p>
+            <p class="valores-lema">RECTIVIA — Sentate tranqui.</p>
+            <a class="btn" href="#producto">Conocé lo que nos mueve</a>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="carrusel-controles">
+        <button class="car-btn" id="car-prev" type="button" aria-label="Paleta anterior">‹</button>
+        <div class="car-dots" id="car-dots"></div>
+        <button class="car-btn" id="car-next" type="button" aria-label="Paleta siguiente">›</button>
+      </div>
     </div>
   </div>
 </section>
@@ -927,6 +964,60 @@
       }
     });
     audio.addEventListener('ended', function () { actualizar(false); });
+  })();
+</script>
+<script>
+  (function () {
+    var track = document.getElementById('carrusel-track');
+    var car = document.getElementById('carrusel');
+    var dots = document.getElementById('car-dots');
+    if (!track || !car) return;
+    var n = track.children.length, i = 0, timer = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    for (var k = 0; k < n; k++) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'car-dot';
+      b.setAttribute('aria-label', 'Ir a la paleta ' + (k + 1));
+      b.addEventListener('click', (function (idx) { return function () { ir(idx); reiniciar(); }; })(k));
+      dots.appendChild(b);
+    }
+
+    function pintar() {
+      track.style.transform = 'translateX(-' + (i * 100) + '%)';
+      for (var j = 0; j < dots.children.length; j++) {
+        dots.children[j].classList.toggle('activo', j === i);
+      }
+    }
+    function ir(k) { i = (k + n) % n; pintar(); }
+    function sig() { ir(i + 1); }
+    function ant() { ir(i - 1); }
+
+    function iniciar() { if (reduce) return; detener(); timer = setInterval(sig, 6000); }
+    function detener() { if (timer) { clearInterval(timer); timer = null; } }
+    function reiniciar() { iniciar(); }
+
+    document.getElementById('car-next').addEventListener('click', function () { sig(); reiniciar(); });
+    document.getElementById('car-prev').addEventListener('click', function () { ant(); reiniciar(); });
+
+    car.addEventListener('mouseenter', detener);
+    car.addEventListener('mouseleave', iniciar);
+    car.addEventListener('focusin', detener);
+    car.addEventListener('focusout', iniciar);
+
+    var x0 = null;
+    car.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; detener(); }, { passive: true });
+    car.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) { if (dx < 0) sig(); else ant(); }
+      x0 = null;
+      iniciar();
+    });
+
+    pintar();
+    iniciar();
   })();
 </script>
 </body>
