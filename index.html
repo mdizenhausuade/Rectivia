@@ -274,23 +274,6 @@
   .new-price { font-family: "Fredoka", sans-serif; font-size: 2.2rem; font-weight: 600; color: var(--txt); line-height: 1.1; }
   .price-box small { color: var(--txt-suave); font-size: .82rem; }
 
-  /* Gomitas que caen por los costados */
-  .gummy-rain { position: fixed; inset: 0; pointer-events: none; z-index: 4; overflow: hidden; }
-  .gummy-rain img { position: absolute; top: -12vh; width: 34px; height: auto; opacity: .9; animation: caer linear infinite; }
-  .gummy-rain .izq { left: 1%; } .gummy-rain .der { right: 1%; }
-  .gummy-rain img:nth-child(1) { left: 0.5%; animation-duration: 12s; animation-delay: -2s; width: 30px; }
-  .gummy-rain img:nth-child(2) { left: 3.5%; animation-duration: 16s; animation-delay: -9s; width: 40px; }
-  .gummy-rain img:nth-child(3) { left: 1.8%; animation-duration: 14s; animation-delay: -5s; width: 26px; }
-  .gummy-rain img:nth-child(4) { right: 0.5%; animation-duration: 13s; animation-delay: -7s; width: 32px; }
-  .gummy-rain img:nth-child(5) { right: 3.2%; animation-duration: 18s; animation-delay: -11s; width: 36px; }
-  .gummy-rain img:nth-child(6) { right: 1.6%; animation-duration: 15s; animation-delay: -3s; width: 26px; }
-  @keyframes caer {
-    0%   { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(125vh) rotate(360deg); }
-  }
-  @media (max-width: 520px) { .gummy-rain img { width: 22px !important; } .gummy-rain img:nth-child(2), .gummy-rain img:nth-child(5) { width: 26px !important; } }
-  @media (prefers-reduced-motion: reduce) { .gummy-rain { display: none; } }
-
   /* Ventana de suscripción al entrar */
   .nl-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(58,42,36,.55); display: flex; align-items: center; justify-content: center; padding: 1.2rem; }
   .nl-overlay[hidden] { display: none; }
@@ -353,6 +336,22 @@
   .car-dot.activo { width: 26px; background: var(--terra); }
   @media (max-width: 520px) { .carrusel-slide { padding: 2rem 1.3rem; min-height: 300px; } .carrusel-slide h3 { font-size: 1.35rem; } .carrusel-slide .valores-destacado { font-size: 1.25rem !important; } }
 
+  /* Composición: cada componente explicado */
+  .ficha-comp { list-style: none; padding: 0; margin: 0 0 .9rem; display: grid; gap: .7rem; }
+  .ficha-comp li { background: var(--crema); border: 1px solid var(--linea); border-radius: 14px; padding: .8rem .95rem; display: grid; gap: .25rem; }
+  .ficha-comp strong { font-family: "Fredoka", sans-serif; color: var(--terra); font-size: 1.05rem; font-weight: 600; }
+  .ficha-comp span { font-size: .9rem; color: var(--txt); line-height: 1.5; }
+  .ficha-comp em { font-style: normal; font-weight: 600; color: var(--txt-suave); }
+
+  /* Ficha como carrusel de paletas */
+  .ficha-carrusel { max-width: 760px; }
+  .ficha-slide { flex: 0 0 100%; margin: 0; box-sizing: border-box; padding: 2rem 2rem 1.8rem; }
+  .ficha-slide p, .ficha-slide li { font-size: 1rem; }
+  @media (max-width: 520px) { .ficha-slide { padding: 1.6rem 1.3rem 1.4rem; } }
+
+  #ficha-track { align-items: flex-start; }
+  #ficha-vp { height: auto; transition: height .45s ease; }
+  #ficha-car .ficha-slide { min-height: 0; }
   /* Barra fija de consulta (mobile) */
   .sticky-cta { display: none; }
   @media (max-width: 760px) {
@@ -410,7 +409,6 @@
   }
   /* Corrección celular: ventana de suscripción y gomitas */
   @media (max-width: 520px) {
-    .gummy-rain { display: none; }
     .nl-overlay { padding: .8rem; align-items: flex-end; }
     .nl-modal { border-radius: 22px; padding: 2rem 1.1rem 1.2rem; max-height: 88vh; }
     .nl-modal h2 { font-size: 1.6rem; }
@@ -559,49 +557,63 @@
       <p>Organizado en cuatro apartados para que encuentres lo que necesitás sin leer todo.</p>
     </div>
 
-    <div class="ficha-grid">
+    <div class="carrusel ficha-carrusel" id="ficha-car" aria-roledescription="carrusel" aria-label="Ficha del producto">
+      <div class="carrusel-viewport" id="ficha-vp">
+        <div class="carrusel-track" id="ficha-track">
+        <article class="ficha-card ficha-slide">
+          <div class="ficha-num">1</div>
+          <h3>¿Qué es?</h3>
+          <p>RECTIVIA es una propuesta de producto farmacéutico en formato de gomitas masticables, pensado para aliviar las molestias asociadas a las hemorroides. Busca ofrecer una alternativa práctica, discreta y fácil de transportar.</p>
+        </article>
 
-      <article class="ficha-card">
-        <div class="ficha-num">1</div>
-        <h3>¿Qué es?</h3>
-        <p>RECTIVIA es un producto en formato de gomita masticable, pensado para las molestias asociadas a las hemorroides. Es fácil de llevar y se usa sin cremas.</p>
-        <p class="ficha-placeholder">[Completar: indicación aprobada según el prospecto]</p>
-        <div class="pompi-say">Tranqui, empezamos por lo básico.</div>
-      </article>
+        <article class="ficha-card ficha-slide">
+          <div class="ficha-num">2</div>
+          <h3>Composición</h3>
+          <p>Se propone una combinación de tres componentes:</p>
+          <ul class="ficha-comp">
+            <li>
+              <strong>Diosmina</strong>
+              <span><em>Qué es:</em> flavonoide.</span>
+              <span><em>Para qué sirve:</em> ayuda a mejorar el tono de las venas.</span>
+            </li>
+            <li>
+              <strong>Hesperidina</strong>
+              <span><em>Qué es:</em> flavonoide.</span>
+              <span><em>Para qué sirve:</em> complementa la acción de la diosmina y contribuye a proteger los vasos sanguíneos.</span>
+            </li>
+            <li>
+              <strong>Excipientes</strong>
+              <span><em>Qué son:</em> ingredientes que aportan sabor, textura y consistencia a las gomitas.</span>
+            </li>
+          </ul>
+          <p class="ficha-placeholder">La concentración definitiva deberá validarse durante el desarrollo del producto.</p>
+        </article>
 
-      <article class="ficha-card">
-        <div class="ficha-num">2</div>
-        <h3>Composición</h3>
-        <p>Te explicamos cada componente con lenguaje sencillo: qué es y para qué cumple función dentro de la formulación aprobada.</p>
-        <ul class="ficha-list">
-          <li><strong>[Componente 1]:</strong> qué es y para qué se utiliza.</li>
-          <li><strong>[Componente 2]:</strong> qué es y para qué se utiliza.</li>
-          <li><strong>[Componente 3]:</strong> qué es y para qué se utiliza.</li>
-        </ul>
-        <p class="ficha-placeholder">[Completar con la composición oficial]</p>
-        <div class="pompi-say">Sin vueltas: cada cosa tiene su motivo.</div>
-      </article>
+        <article class="ficha-card ficha-slide">
+          <div class="ficha-num">3</div>
+          <h3>Modo de uso</h3>
+          <p>Se administra por vía oral, masticando las gomitas. La dosis diaria y la duración del tratamiento deberán establecerse según la formulación definitiva y el prospecto aprobado.</p>
+        </article>
 
-      <article class="ficha-card">
-        <div class="ficha-num">3</div>
-        <h3>Modo de uso</h3>
-        <p>Seguí las indicaciones del prospecto aprobado: forma de uso, dosis y duración. Si no notás mejoría o tenés dudas, consultá a tu médico o farmacéutico.</p>
-        <p class="ficha-placeholder">[Completar según el prospecto aprobado]</p>
-        <div class="pompi-say">Paso a paso, sin apuros.</div>
-      </article>
+        <article class="ficha-card ficha-slide">
+          <div class="ficha-num">4</div>
+          <h3>Precauciones</h3>
+          <ul class="ficha-list">
+            <li>No consumir en caso de alergia a alguno de sus componentes.</li>
+            <li>Consultar con un profesional antes de utilizar durante el embarazo o la lactancia.</li>
+            <li>Consultar antes de combinarlo con otros medicamentos.</li>
+            <li>Mantener fuera del alcance de los niños.</li>
+            <li>Si los síntomas persisten o empeoran, consultar con un médico.</li>
+          </ul>
+        </article>
 
-      <article class="ficha-card">
-        <div class="ficha-num">4</div>
-        <h3>Precauciones</h3>
-        <ul class="ficha-list">
-          <li>No lo uses si sos alérgica/o a alguno de sus componentes.</li>
-          <li>Consultá antes de usarlo si estás embarazada, en período de lactancia o tomás otros medicamentos.</li>
-          <li>Mantenelo fuera del alcance de los niños.</li>
-        </ul>
-        <p class="ficha-placeholder">[Completar según el prospecto aprobado]</p>
-        <div class="pompi-say">Mejor saberlo antes, ¿no?</div>
-      </article>
-
+              </div>
+      </div>
+      <div class="carrusel-controles">
+        <button class="car-btn" id="ficha-prev" type="button" aria-label="Apartado anterior">‹</button>
+        <div class="car-dots" id="ficha-dots"></div>
+        <button class="car-btn" id="ficha-next" type="button" aria-label="Apartado siguiente">›</button>
+      </div>
     </div>
   </div>
 </section>
@@ -892,14 +904,6 @@
     mostrar(sel ? sel.value : 'producto1');
   })();
 </script>
-<div class="gummy-rain" aria-hidden="true">
-  <img src="gomita1.png" alt="">
-  <img src="gomita1.png" alt="">
-  <img src="gomita1.png" alt="">
-  <img src="gomita2.png" alt="">
-  <img src="gomita2.png" alt="">
-  <img src="gomita2.png" alt="">
-</div>
 <div class="nl-overlay" id="nl-overlay" hidden>
   <div class="nl-modal" role="dialog" aria-modal="true" aria-labelledby="nl-titulo">
     <button class="nl-close" type="button" id="nl-cerrar" aria-label="Cerrar">×</button>
@@ -1018,6 +1022,65 @@
 
     pintar();
     iniciar();
+  })();
+</script>
+<script>
+  (function () {
+    function carrusel(opts) {
+      var track = document.getElementById(opts.track);
+      var car = document.getElementById(opts.car);
+      var dots = document.getElementById(opts.dots);
+      var prev = document.getElementById(opts.prev);
+      var next = document.getElementById(opts.next);
+      if (!track || !car || !dots || !prev || !next) return;
+      var n = track.children.length, i = 0, timer = null;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      for (var k = 0; k < n; k++) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'car-dot';
+        b.setAttribute('aria-label', 'Ir al apartado ' + (k + 1));
+        b.addEventListener('click', (function (idx) { return function () { ir(idx); iniciar(); }; })(k));
+        dots.appendChild(b);
+      }
+      function ajustarAlto() {
+        var vp = opts.viewport && document.getElementById(opts.viewport);
+        if (!vp || !track.children[i]) return;
+        vp.style.height = track.children[i].offsetHeight + 'px';
+      }
+      function pintar() {
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        ajustarAlto();
+        for (var j = 0; j < dots.children.length; j++) dots.children[j].classList.toggle('activo', j === i);
+      }
+      function ir(k) { i = (k + n) % n; pintar(); }
+      function sig() { ir(i + 1); }
+      function ant() { ir(i - 1); }
+      function iniciar() { if (reduce) return; detener(); timer = setInterval(sig, opts.ms); }
+      function detener() { if (timer) { clearInterval(timer); timer = null; } }
+
+      next.addEventListener('click', function () { sig(); iniciar(); });
+      prev.addEventListener('click', function () { ant(); iniciar(); });
+      car.addEventListener('mouseenter', detener);
+      car.addEventListener('mouseleave', iniciar);
+      car.addEventListener('focusin', detener);
+      car.addEventListener('focusout', iniciar);
+      var x0 = null;
+      car.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; detener(); }, { passive: true });
+      car.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 40) { if (dx < 0) sig(); else ant(); }
+        x0 = null;
+        iniciar();
+      });
+      window.addEventListener('resize', ajustarAlto);
+      window.addEventListener('load', ajustarAlto);
+      pintar();
+      iniciar();
+    }
+    carrusel({ track: 'ficha-track', car: 'ficha-car', viewport: 'ficha-vp', dots: 'ficha-dots', prev: 'ficha-prev', next: 'ficha-next', ms: 7000 });
   })();
 </script>
 </body>
